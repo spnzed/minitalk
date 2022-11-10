@@ -6,7 +6,7 @@
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 17:05:45 by aaespino          #+#    #+#             */
-/*   Updated: 2022/11/09 14:06:40 by aaespino         ###   ########.fr       */
+/*   Updated: 2022/11/10 16:42:08 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,41 +32,28 @@ void binario_decimal(char *bits)
 		i++;
 	}
 	write(1, &num, 1);
-	free(bits);
 }
 
 void ft_signal(int signal)
 {
+	static char	bits[9];
 	static int 	contador;
-	static char *bits;
-	char		*aux;
 
 	//aumentamos en 1 el valor de contador
-	contador++;
+	bits[8] = '\0';
 	//si bits es nulo (al inicio del proceso) lo rellenaremos
 	//con una string vacia, y ponemos el contador a 1
-	if (bits == NULL)
-	{
-		aux = ft_strdup("");
-		contador = 1;
-	}
-	else
-		aux = ft_strdup(bits);
-	//depende de la señal que recibe añadimos a bits un 1 o un 0
 	if (signal == SIGUSR1)
-		bits = ft_strjoin(aux, "0");
+		bits[contador] = '0';
 	else
-		bits = ft_strjoin(aux, "1");
-	free(aux);
-	//cada vez que se vuelva a entrar a esta funcion, al ser los valores
-	//estaticos no variaran y cuando el contador llegue a 8 (el binario completo)
-	//mandamos "bits" a la funcion binario_decimal, liberamos el valor y
-	//lo igualamos a nulo
-	if (contador == 8)
+		bits[contador] = '1';
+	//depende de la señal que recibe añadimos a bits un 1 o un 0
+	if (contador == 7)
 	{
 		binario_decimal(bits);
-		bits = NULL;
+		contador = -1;
 	}
+	contador++;
 }
 
 void	ft_putstr(char *s)
