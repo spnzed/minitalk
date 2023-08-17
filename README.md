@@ -91,14 +91,14 @@ $ make
 #	Now to execute it, first make the server run:
 $ ./server
 #	Then server will give us it's PID
-server> PID is: 912354
+$ server> PID is: 912354
 ```
-**2. Make it run**
+**2. Make it run (or talk!)**
 ```bash
 # Client needs the PID of server, and then text. Example you can see below.
 $ ./client 912354 "Hello world"
 #	Then server will give us the message!
-server>Hello world
+$ server>Hello world
 ```
 
 </p>
