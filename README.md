@@ -70,16 +70,6 @@ The Project
 Usage
 </h2>
 
-### How to build and run
-
-client needs pid of server, and then text. In files test1.txt and test2.txt you can find sample texts to transfer. Example you can see below.
-```
-./server
-server> PID is: 912354
-./client 912354 "Hello world"
-server>Hello world
-```
-
 ### 🛠️ Instructions
 
 **0. Download the archives**
@@ -100,13 +90,15 @@ $ make
 # This command compiles the executable files of 'minitalk'
 #	Now to execute it, first make the server run:
 $ ./server
+#	Then server will give us it's PID
+server> PID is: 912354
 ```
-**2. How to play**
-- Control the player using the arrow keys (up, down, left, and right) or the letter keys (w, a, s, and d).
-- Press the 'R' key on your keyboard to reset the current level.
-- Press the [ESC] key or Click in the 'X' window to exit the game.
-
-<p align="center">
-<img width="841" alt="Captura de pantalla 2023-08-17 a las 12 01 43" src="https://github.com/spnzed/so_long/assets/95354392/ea6a73d7-2560-4c9f-b3d8-5e7263044a35">
+**2. Make it run**
+```bash
+# Client needs the PID of server, and then text. Example you can see below.
+$ ./client 912354 "Hello world"
+#	Then server will give us the message!
+server>Hello world
+```
 
 </p>
