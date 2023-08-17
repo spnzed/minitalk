@@ -15,14 +15,23 @@ The purpose of this project is to code a small data exchange program using UNIX 
 Mandatory
 </h3>
 
-<b>Game actions:</b>
-> <i>The player can move in four directions but cannot move into walls. To exit the game, the player needs to collect something. The WASD keys are used to move the main character, and the game has a top-down 2D view. The movements are displayed in the shell, and pressing ESC must close the window and quit the program cleanly. </i>
+<b>Create a communication program in the form of a client and a server.:</b>
+> <i>- The server must be started first. After its launch, it has to print its PID.
+- The client takes two parameters:
+  - The server PID.
+  - The string to send.
+- The client must send the string passed as a parameter to the server.</i>
 
-<b>Graphics actions:</b>
-> <i>The program should display the image within a window, and window management should be smooth, such as switching to another window or minimizing. Pressing the [ESC] key should close the window and quit the program cleanly. The usage of MiniLibX images is mandatory.</i>
+<b>Once the string has been received, the server must print it.:</b>
+> <i>- The server has to display the string pretty quickly. Quickly means that if you think
+it takes too long, then it is probably too long.</i>
 
-<b>Map actions:</b>
-> <i>The map must be rectangular/square in shape, surrounded by walls with a clear path to the exit. It should be able to parse any type of map as long as it follows the aforementioned rules and contains three components - the exit, player start position, and collectibles. Additionally, if there is a misconfiguration in the map, the program should return an error message to indicate the issue.</i>
+<b>1 second for displaying 100 characters is way too much:</b>
+> <i>- Your server should be able to receive strings from several clients in a row without
+needing to restart.
+- The communication between your client and your server has to be done only using
+UNIX signals.
+- You can only use these two signals: SIGUSR1 and SIGUSR2./i>
 
 <h3 align=center>
 
